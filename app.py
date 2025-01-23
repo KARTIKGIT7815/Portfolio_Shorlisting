@@ -15,7 +15,7 @@ llm = ChatGroq(
     temperature=0.5,
     timeout=None,
     max_retries=2,
-    api_key='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'
+    api_key='' #put your API Key
 )
 
 @app.route('/')
