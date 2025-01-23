@@ -1,0 +1,8 @@
+pandas
+flask
+PyPDF2
+chromadb
+langchain
+groq
+streamlit
+gunicorn
