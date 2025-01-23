@@ -7,3 +7,4 @@ groq
 streamlit
 gunicorn
 langchain-groq
+json
