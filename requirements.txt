@@ -6,3 +6,4 @@ langchain
 groq
 streamlit
 gunicorn
+langchain-groq
