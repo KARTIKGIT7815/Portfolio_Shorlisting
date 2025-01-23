@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Generation</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f9f9f9; /* Softer Background */
+            color: #333333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem; /* More Padding */
+        }
+
+        .result-container {
+            max-width: 800px; /* Broader Width */
+            width: 100%;
+            background: #ffffff; /* White Background */
+            padding: 3rem 2rem; /* Generous Padding */
+            border-radius: 0px; /* Fully Rectangular */
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1); /* Subtle Shadow */
+            text-align: center;
+            border: 1px solid #d6e9f8; /* Subtle Border */
+        }
+
+        h1 {
+            font-size: 2.5rem; /* Larger Font */
+            font-weight: 700;
+            color: #004080; /* Professional Blue */
+            margin-bottom: 2rem; /* More Space Below */
+        }
+
+        .email-content p {
+            font-size: 1.2rem; /* Larger Font Size */
+            line-height: 1.8; /* Increased Line Height */
+            color: #444444; /* Slightly Darker Text */
+            text-align: left;
+            white-space: pre-wrap; /* Preserves Text Formatting */
+            margin: 1.5rem 0; /* Space Above and Below */
+        }
+
+        .button-container {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem; /* Space Between Buttons */
+        }
+
+        .button-container a, .button-container button {
+            background-color: #0056b3; /* Professional Blue */
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.8rem 2.5rem;
+            font-size: 1.1rem; /* Slightly Larger */
+            font-weight: 600;
+            border: none;
+            border-radius: 6px; /* Rounded Button */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-container a:hover, .button-container button:hover {
+            background-color: #003d80; /* Darker Blue */
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.3rem;
+            }
+
+            .email-content p {
+                font-size: 1.1rem;
+                line-height: 1.6;
+            }
+
+            .button-container a, .button-container button {
+                font-size: 1rem;
+                padding: 0.7rem 2rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        function copyText() {
+            const textToCopy = document.querySelector(".email-content p").innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert("Text copied to clipboard!");
+            }).catch(err => {
+                alert("Failed to copy text: " + err);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="result-container">
+        <h1>Email</h1>
+        <div class="email-content">
+            <p>{{ Email }}</p>
+        </div>
+        <div class="button-container">
+            <a href="/" class="back-button">Back to Home</a>
+            <button onclick="copyText()">Copy Text</button>
+        </div>
+    </div>
+</body>
+</html>

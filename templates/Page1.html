@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Upload</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f9f9f9;
+            color: #333333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .form-container {
+            max-width: 900px;
+            width: 100%;
+            background: #ffffff;
+            padding: 2rem 3rem;
+            border-radius: 0px; /* Fully Rectangular */
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            border: 1px solid #d6e9f8;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #004080;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333333;
+        }
+
+        input, textarea, select {
+            font-size: 1rem;
+            padding: 0.8rem;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .file-input-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .file-input-container input[type="file"] {
+            display: none; /* Hide the default file input */
+        }
+
+        .custom-file-upload {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            background-color: #0056b3;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .custom-file-upload:hover {
+            background-color: #003d80;
+        }
+
+        .file-names {
+            font-size: 0.95rem;
+            color: #444444;
+        }
+
+        .row, .inline-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .row > div, .inline-row > div {
+            flex: 1;
+        }
+
+        button {
+            background-color: #0056b3;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.8rem 2.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #003d80;
+        }
+
+        @media (max-width: 768px) {
+            .row, .inline-row {
+                flex-direction: column;
+            }
+
+            .custom-file-upload {
+                padding: 0.7rem 1.5rem;
+            }
+
+            button {
+                font-size: 1rem;
+                padding: 0.7rem 2rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        function displayFileNames() {
+            const fileInput = document.getElementById("files");
+            const fileNamesContainer = document.querySelector(".file-names");
+            const fileList = fileInput.files;
+            let fileNames = "";
+            for (let i = 0; i < fileList.length; i++) {
+                fileNames += `${fileList[i].name}<br>`;
+            }
+            fileNamesContainer.innerHTML = fileNames || "No files selected.";
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Upload Resume</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label for="files">Upload Resumes:</label>
+            <div class="file-input-container">
+                <label for="files" class="custom-file-upload">Choose Files</label>
+                <input type="file" id="files" name="pdf_files" accept="application/pdf" multiple required onchange="displayFileNames()">
+            </div>
+            <div class="file-names">No files selected.</div>
+
+            <label for="words">Enter Company Requirements:</label>
+            <textarea id="words" name="words" rows="4" cols="50" placeholder="Enter words separated by spaces or commas"></textarea>
+
+            <div>
+                <label for="students">Number of Results:</label>
+                <input type="number" id="students" name="students" min="1" required>
+            </div>
+
+            <div class="row">
+                <div>
+                    <label for="company_name">Company Name:</label>
+                    <input type="text" id="company_name" name="company_name" required>
+                </div>
+                <div>
+                    <label for="consultancy_name">Consultancy Name:</label>
+                    <input type="text" id="consultancy_name" name="consultancy_name" required>
+                </div>
+            </div>
+
+            <button type="submit">Submit Details</button>
+        </form>
+    </div>
+</body>
+</html>
