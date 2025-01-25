@@ -11,7 +11,7 @@ client = chromadb.Client()
 
 
 llm = ChatGroq(
-    model="llama-3.1-70b-versatile",
+    model="gemma2-9b-it",
     temperature=0.5,
     timeout=None,
     max_retries=2,
